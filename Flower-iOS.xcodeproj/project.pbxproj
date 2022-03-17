@@ -21,6 +21,7 @@
 		D98E7A6D27E1BB1C0098B1C7 /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A6C27E1BB1C0098B1C7 /* CommunityView.swift */; };
 		D98E7A6F27E1BEDF0098B1C7 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A6E27E1BEDF0098B1C7 /* OpenAPI.swift */; };
 		D98E7A7327E1CF190098B1C7 /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A7227E1CF190098B1C7 /* Flower.swift */; };
+		D98E7A7B27E1F47F0098B1C7 /* FlowerLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A7A27E1F47F0098B1C7 /* FlowerLanguageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		D98E7A6E27E1BEDF0098B1C7 /* OpenAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAPI.swift; sourceTree = "<group>"; };
 		D98E7A7227E1CF190098B1C7 /* Flower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
 		D98E7A7927E1D3360098B1C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D98E7A7A27E1F47F0098B1C7 /* FlowerLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerLanguageViewModel.swift; sourceTree = "<group>"; };
 		F841C2E3145963AA7EE6DC5A /* Pods-Flower-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flower-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Flower-iOS/Pods-Flower-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				D98E7A6A27E1BB0F0098B1C7 /* FlowerLanguageView.swift */,
+				D98E7A7A27E1F47F0098B1C7 /* FlowerLanguageViewModel.swift */,
 			);
 			path = FlowerLauguageView;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				D98E7A6727E1B9840098B1C7 /* SearchBar.swift in Sources */,
 				D98E7A7327E1CF190098B1C7 /* Flower.swift in Sources */,
 				D98E7A6B27E1BB0F0098B1C7 /* FlowerLanguageView.swift in Sources */,
+				D98E7A7B27E1F47F0098B1C7 /* FlowerLanguageViewModel.swift in Sources */,
 				D98E7A5A27E1B5810098B1C7 /* ImagePicker.swift in Sources */,
 				D98E7A6027E1B7780098B1C7 /* OpenAPIReposisory.swift in Sources */,
 				D98E7A6F27E1BEDF0098B1C7 /* OpenAPI.swift in Sources */,
