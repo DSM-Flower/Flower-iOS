@@ -22,6 +22,15 @@
 		D98E7A6F27E1BEDF0098B1C7 /* OpenAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A6E27E1BEDF0098B1C7 /* OpenAPI.swift */; };
 		D98E7A7327E1CF190098B1C7 /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A7227E1CF190098B1C7 /* Flower.swift */; };
 		D98E7A7B27E1F47F0098B1C7 /* FlowerLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A7A27E1F47F0098B1C7 /* FlowerLanguageViewModel.swift */; };
+		D98E7A8027E41A120098B1C7 /* UIFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A7F27E41A120098B1C7 /* UIFrame.swift */; };
+		D98E7A8527E41DB80098B1C7 /* FlowerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A8427E41DB80098B1C7 /* FlowerDetailView.swift */; };
+		D98E7A8827E41EDF0098B1C7 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A8727E41EDF0098B1C7 /* LazyView.swift */; };
+		D98E7A8A27E420830098B1C7 /* FlowerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A8927E420830098B1C7 /* FlowerDetailViewModel.swift */; };
+		D98E7A8C27E4441D0098B1C7 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A8B27E4441D0098B1C7 /* CommunityViewModel.swift */; };
+		D98E7A9527E446E30098B1C7 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A9427E446E30098B1C7 /* PostView.swift */; };
+		D98E7A9727E446E80098B1C7 /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A9627E446E80098B1C7 /* PostViewModel.swift */; };
+		D98E7A9927E446EE0098B1C7 /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A9827E446EE0098B1C7 /* CommentsViewModel.swift */; };
+		D98E7A9B27E446F40098B1C7 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98E7A9A27E446F40098B1C7 /* CommentsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +52,15 @@
 		D98E7A7227E1CF190098B1C7 /* Flower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
 		D98E7A7927E1D3360098B1C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D98E7A7A27E1F47F0098B1C7 /* FlowerLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerLanguageViewModel.swift; sourceTree = "<group>"; };
+		D98E7A7F27E41A120098B1C7 /* UIFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFrame.swift; sourceTree = "<group>"; };
+		D98E7A8427E41DB80098B1C7 /* FlowerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerDetailView.swift; sourceTree = "<group>"; };
+		D98E7A8727E41EDF0098B1C7 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
+		D98E7A8927E420830098B1C7 /* FlowerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerDetailViewModel.swift; sourceTree = "<group>"; };
+		D98E7A8B27E4441D0098B1C7 /* CommunityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
+		D98E7A9427E446E30098B1C7 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		D98E7A9627E446E80098B1C7 /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
+		D98E7A9827E446EE0098B1C7 /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
+		D98E7A9A27E446F40098B1C7 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		F841C2E3145963AA7EE6DC5A /* Pods-Flower-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flower-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Flower-iOS/Pods-Flower-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +163,8 @@
 		D98E7A6427E1B7910098B1C7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D98E7A8127E41DA60098B1C7 /* FlowerDetailView */,
+				D98E7A7E27E41A0B0098B1C7 /* Constraints */,
 				D98E7A6927E1BAF50098B1C7 /* CommunityView */,
 				D98E7A6827E1BAED0098B1C7 /* FlowerLauguageView */,
 				D98E7A6527E1B97B0098B1C7 /* Shared */,
@@ -158,6 +178,7 @@
 			children = (
 				D98E7A5927E1B5810098B1C7 /* ImagePicker.swift */,
 				D98E7A6627E1B9840098B1C7 /* SearchBar.swift */,
+				D98E7A8727E41EDF0098B1C7 /* LazyView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -174,7 +195,9 @@
 		D98E7A6927E1BAF50098B1C7 /* CommunityView */ = {
 			isa = PBXGroup;
 			children = (
-				D98E7A6C27E1BB1C0098B1C7 /* CommunityView.swift */,
+				D98E7A9127E446BA0098B1C7 /* Comments */,
+				D98E7A9027E446B70098B1C7 /* Post */,
+				D98E7A8F27E446B10098B1C7 /* List */,
 			);
 			path = CommunityView;
 			sourceTree = "<group>";
@@ -185,6 +208,50 @@
 				D98E7A4F27E1A4F90098B1C7 /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		D98E7A7E27E41A0B0098B1C7 /* Constraints */ = {
+			isa = PBXGroup;
+			children = (
+				D98E7A7F27E41A120098B1C7 /* UIFrame.swift */,
+			);
+			path = Constraints;
+			sourceTree = "<group>";
+		};
+		D98E7A8127E41DA60098B1C7 /* FlowerDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				D98E7A8427E41DB80098B1C7 /* FlowerDetailView.swift */,
+				D98E7A8927E420830098B1C7 /* FlowerDetailViewModel.swift */,
+			);
+			path = FlowerDetailView;
+			sourceTree = "<group>";
+		};
+		D98E7A8F27E446B10098B1C7 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D98E7A6C27E1BB1C0098B1C7 /* CommunityView.swift */,
+				D98E7A8B27E4441D0098B1C7 /* CommunityViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		D98E7A9027E446B70098B1C7 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				D98E7A9427E446E30098B1C7 /* PostView.swift */,
+				D98E7A9627E446E80098B1C7 /* PostViewModel.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		D98E7A9127E446BA0098B1C7 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				D98E7A9827E446EE0098B1C7 /* CommentsViewModel.swift */,
+				D98E7A9A27E446F40098B1C7 /* CommentsView.swift */,
+			);
+			path = Comments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,18 +368,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D98E7A9927E446EE0098B1C7 /* CommentsViewModel.swift in Sources */,
+				D98E7A8027E41A120098B1C7 /* UIFrame.swift in Sources */,
 				D98E7A6727E1B9840098B1C7 /* SearchBar.swift in Sources */,
 				D98E7A7327E1CF190098B1C7 /* Flower.swift in Sources */,
+				D98E7A8827E41EDF0098B1C7 /* LazyView.swift in Sources */,
+				D98E7A8A27E420830098B1C7 /* FlowerDetailViewModel.swift in Sources */,
 				D98E7A6B27E1BB0F0098B1C7 /* FlowerLanguageView.swift in Sources */,
 				D98E7A7B27E1F47F0098B1C7 /* FlowerLanguageViewModel.swift in Sources */,
 				D98E7A5A27E1B5810098B1C7 /* ImagePicker.swift in Sources */,
+				D98E7A8527E41DB80098B1C7 /* FlowerDetailView.swift in Sources */,
 				D98E7A6027E1B7780098B1C7 /* OpenAPIReposisory.swift in Sources */,
 				D98E7A6F27E1BEDF0098B1C7 /* OpenAPI.swift in Sources */,
+				D98E7A8C27E4441D0098B1C7 /* CommunityViewModel.swift in Sources */,
 				D98E7A5C27E1B64D0098B1C7 /* FlowerPhotoView.swift in Sources */,
 				D98E7A6D27E1BB1C0098B1C7 /* CommunityView.swift in Sources */,
 				D98E7A5E27E1B7160098B1C7 /* FlowerPhotoViewModel.swift in Sources */,
 				D98E7A4E27E1A4F80098B1C7 /* ContentView.swift in Sources */,
+				D98E7A9527E446E30098B1C7 /* PostView.swift in Sources */,
 				D98E7A4C27E1A4F80098B1C7 /* Flower_iOSApp.swift in Sources */,
+				D98E7A9727E446E80098B1C7 /* PostViewModel.swift in Sources */,
+				D98E7A9B27E446F40098B1C7 /* CommentsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

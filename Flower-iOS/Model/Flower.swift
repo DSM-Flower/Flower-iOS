@@ -58,6 +58,8 @@ public struct Flower {
         self.imageUrls = [accessor.imgUrl1.element.toString(), accessor.imgUrl2.element.toString(), accessor.imgUrl3.element.toString()]
         self.publishOrg = accessor.publishOrg.text!
     }
+    
+    static let Empty = Flower(no: 0, name: "", scientificName: "", englishName: "", flowerLanguage: "", content: "", use: "", grow: "", type: "", imageUrls: ["", "", ""], publishOrg: "")
 }
 
 

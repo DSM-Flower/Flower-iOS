@@ -22,9 +22,10 @@ public class OpenAPIRepository {
         self.parseJson(from: url, completion: completion)
     }
     
-    public func getFlower(dataNo: Int, completion: @escaping ([Flower]) -> ()) {
+    public func getFlower(dataNo: Int, completion: @escaping (Flower) -> ()) {
         var url = OpenAPI.baseUrl.item.rawValue
         url += "&dataNo=" + String(dataNo)
+        url += "&ServiceKey=" + OpenAPI.serviceKey
         
         self.parseJson(from: url, completion: completion)
     }
@@ -45,6 +46,16 @@ public class OpenAPIRepository {
                     }
                 }
                 completion(flowers)
+            }
+    }
+    
+    private func parseJson(from url: String, completion: @escaping (Flower) -> ()) {
+        AF.request(url, method: .get)
+            .responseData { response in
+                if let data = response.data {
+                    let xml = XML.parse(data)
+                    completion(Flower(xml.document.root.result))
+                }
             }
     }
 }
