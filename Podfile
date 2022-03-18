@@ -9,5 +9,6 @@ target 'Flower-iOS' do
   pod "SwiftyXMLParser", :git => 'https://github.com/yahoojapan/SwiftyXMLParser.git'
   pod 'Alamofire', '~> 5.5'
   pod 'Kingfisher'
+  pod 'Introspect'
 
 end

@@ -1,16 +1,19 @@
 PODS:
   - Alamofire (5.5.0)
+  - Introspect (0.1.4)
   - Kingfisher (7.2.0)
   - SwiftyXMLParser (5.5.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
+  - Introspect
   - Kingfisher
   - SwiftyXMLParser (from `https://github.com/yahoojapan/SwiftyXMLParser.git`)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Introspect
     - Kingfisher
 
 EXTERNAL SOURCES:
@@ -24,9 +27,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Introspect: b62c4dd2063072327c21d618ef2bedc3c87bc366
   Kingfisher: 3ac0b75b155cabc0e544877d1a4deea29feece92
   SwiftyXMLParser: 027d9e6fb54a38d95dccec025bcea9693f699c47
 
-PODFILE CHECKSUM: 3616dec015e888fcc026928818c58248a77325c2
+PODFILE CHECKSUM: 112741db75f894c09a65bad957a873e438f14078
 
 COCOAPODS: 1.11.2
