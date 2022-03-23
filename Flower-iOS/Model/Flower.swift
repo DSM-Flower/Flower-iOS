@@ -49,7 +49,7 @@ public struct Flower {
         self.no = Int(accessor.dataNo.text!)!
         self.name = accessor.flowNm.text!
         self.scientificName = accessor.fSctNm.text ?? ""
-        self.englishName = accessor.fEngNm.text ?? ""
+        self.englishName = "(" + (accessor.fEngNm.text ?? "") + ")"
         self.flowerLanguage = accessor.flowLang.text!
         self.content = accessor.fContent.element.toString()
         self.use = accessor.fUse.element.toString()
