@@ -31,7 +31,14 @@ struct FlowerPhotoView: View {
                 ScrollView {
                     ForEach(viewModel.flowers, id: \.no) { flower in
                         NavigationLink(destination: LazyView(FlowerDetailView(no: flower.no))) {
-                            FlowerRow(flower: flower)
+                            VStack(spacing: 10) {
+                                FlowerRow(flower: flower)
+                                
+                                if flower.no != viewModel.flowers.last?.no {
+                                    CustomDivider()
+                                }
+                            }.padding(.horizontal, 10)
+                                .padding(.top, 5)
                         }
                     }
                 }
@@ -90,7 +97,6 @@ struct FlowerRow: View {
             }
             
             Spacer()
-        }.padding(.horizontal, 10)
-        .padding(.vertical, 5)
+        }
     }
 }

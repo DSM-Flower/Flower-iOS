@@ -8,5 +8,7 @@
 import Foundation
 
 class CommentsViewModel: ObservableObject {
-    
+    @Published var newNickname = ""
+    @Published var newPassword = ""
+    @Published var newComment = ""
 }

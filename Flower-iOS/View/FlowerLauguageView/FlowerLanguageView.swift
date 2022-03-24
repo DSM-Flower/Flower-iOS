@@ -18,11 +18,20 @@ struct FlowerLanguageView: View {
                 
                 ScrollView {
                     ForEach(viewModel.flowers, id: \.no) { flower in
-                        FlowerRow(flower: flower)
+                        NavigationLink(destination: LazyView(FlowerDetailView(no: flower.no))) {
+                            VStack(spacing: 10) {
+                                FlowerRow(flower: flower)
+                                
+                                if flower.no != viewModel.flowers.last?.no {
+                                    CustomDivider()
+                                }
+                            }.padding(.horizontal, 10)
+                                .padding(.top, 5)
+                        }
                     }
                 }
             }.padding(.horizontal, 10)
-            .navigationTitle("꽃말 검색")
+                .navigationTitle("꽃말 검색")
         }
         .navigationViewStyle(.stack)
     }

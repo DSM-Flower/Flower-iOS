@@ -14,23 +14,38 @@ struct CommunityListView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                SearchBar(text: $viewModel.search, placeholder: "꽃말을 입력해주세요.")
+            VStack(spacing: 5) {
+                SearchBar(text: $viewModel.search, placeholder: "꽃명을 입력해주세요.")
                 
                 ScrollView {
                     NavigationLink(destination: LazyView(PostView())) {
-                        CommunityRow()
+                        VStack(spacing: 10) {
+                            CommunityRow()
+                            
+//                            if flower.no != viewModel.flowers.last?.no {
+//                                CustomDivider()
+//                            }
+                        }.padding(.horizontal, 10)
+                            .padding(.top, 5)
                     }
                 }
-            }.padding(.horizontal, 10)
-                .navigationTitle("커뮤니티")
-                .introspectTabBarController { (UITabBarController) in
-                    UITabBarController.tabBar.isHidden = false
-                    uiTabarController = UITabBarController
+            }
+            .padding(.horizontal, 10)
+            .navigationTitle("커뮤니티")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: NewPostView()) {
+                        Image(systemName: "pencil")
+                    }
                 }
-                .onAppear {
-                    uiTabarController?.tabBar.isHidden = false
-                }
+            }
+            .introspectTabBarController { (UITabBarController) in
+                UITabBarController.tabBar.isHidden = false
+                uiTabarController = UITabBarController
+            }
+            .onAppear {
+                uiTabarController?.tabBar.isHidden = false
+            }
         }.navigationViewStyle(.stack)
     }
 }
@@ -51,17 +66,21 @@ struct CommunityRow: View {
                 
                 Text("내용")
                     .font(.body)
-                    .foregroundColor(Color("Black"))
-                
-                Text("날짜")
-                    .font(.caption)
                     .foregroundColor(.gray)
+                
+                HStack {
+                    Spacer()
+                    
+                    Text("날짜")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
             }
             
             Spacer()
             
             RoundedRectangle(cornerRadius: 10)
-                .frame(width: 50, height: 50)
+                .frame(width: UIFrame.width / 6, height: UIFrame.width / 6)
         }
     }
 }
