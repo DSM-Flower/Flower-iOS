@@ -21,7 +21,6 @@ public final class FlowerDetailViewModel: ObservableObject {
     public func onAppear(no: Int) {
         self.repository.getFlower(dataNo: no, completion: {
             self.flower = $0
-            print(self.flower)
         })
     }
 }
