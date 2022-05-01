@@ -14,7 +14,7 @@ public final class FlowerDetailViewModel: ObservableObject {
     private var bag = Set<AnyCancellable>()
     private let repository: OpenAPIRepository
     
-    public init(repository: OpenAPIRepository = OpenAPIRepository()) {
+    public init(repository: OpenAPIRepository = OpenAPIRepositoryImpl()) {
         self.repository = repository
     }
     

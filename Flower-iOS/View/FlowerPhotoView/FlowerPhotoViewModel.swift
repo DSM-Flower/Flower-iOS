@@ -15,7 +15,7 @@ class FlowerPhotoViewModel: ObservableObject {
     private var bag = Set<AnyCancellable>()
     private let repository: OpenAPIRepository
     
-    init(repository: OpenAPIRepository = OpenAPIRepository()) {
+    init(repository: OpenAPIRepository = OpenAPIRepositoryImpl()) {
         self.repository = repository
         
         self.$search
