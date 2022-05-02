@@ -9,7 +9,12 @@ import Foundation
 import Alamofire
 import SwiftyXMLParser
 
-public class OpenAPIRepository {
+public protocol OpenAPIRepository: AnyObject {
+    func getFlowerList(type: OpenAPI.SearchType, word: String, completion: @escaping ([Flower]) -> ())
+    func getFlower(dataNo: Int, completion: @escaping (Flower) -> ())
+}
+
+public class OpenAPIRepositoryImpl: OpenAPIRepository {
     public init() {}
     
     public func getFlowerList(type: OpenAPI.SearchType, word: String, completion: @escaping ([Flower]) -> ()) {
