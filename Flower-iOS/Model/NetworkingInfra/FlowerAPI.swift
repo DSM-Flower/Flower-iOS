@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-public enum AuthApi {
+public enum FlowerAPI {
     // MARK: Community
     case getCommunity(search: String)
     case getPost(id: String)
@@ -22,27 +22,27 @@ public enum AuthApi {
     case deleteComment(id: String, nickname: String, password: String)
 }
 
-extension AuthApi {
-    public static let baseUrl = "3.101.139.37"
+extension FlowerAPI {
+    public static let baseUrl = "http://54.153.89.152:5000"
     
     public var path: String {
         switch self {
         // Auth
-        case .getCommunity:
-            return "/community_search"
-        case .getPost:
-            return "/community"
+        case let .getCommunity(search: search):
+            return "/community_search?keyword=\(search)"
+        case let .getPost(id: id):
+            return "/community?id=\(id)"
         case .createPost:
             return "community"
         case .modifyPost:
             return "community"
-        case .deletePost(id: let id, nickname: let nickname, password: let password):
+        case let .deletePost(id: id, nickname: nickname, password: password):
             return "community?id=\(id)&nickname\(nickname)&password=\(password)"
         case .createComment:
             return "comment_post"
         case .modifyComment:
             return ""
-        case .deleteComment(id: let id, nickname: let nickname, password: let password):
+        case let .deleteComment(id: id, nickname: nickname, password: password):
             return ""
         }
     }
