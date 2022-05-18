@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct UnderScoreTextField: View {
-    let title: String
+    let placeholder: String
     @Binding var text: String
     
     var body: some View {
         VStack(spacing: 3) {
-            TextField(title, text: $text)
+            TextField(placeholder, text: $text)
             
             CustomDivider()
         }
