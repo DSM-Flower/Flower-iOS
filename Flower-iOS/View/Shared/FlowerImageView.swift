@@ -19,7 +19,10 @@ public struct FlowerImageView: View {
     public var body: some View {
         Group {
             KFImage(URL(string: url))
-                .placeholder { Image("loading") }
+                .placeholder {
+                    Image("loading")
+                        .resizable()
+                }
                 .resizable()
                 .cornerRadius(10)
         }

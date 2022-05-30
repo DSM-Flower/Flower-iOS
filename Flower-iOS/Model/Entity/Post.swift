@@ -12,17 +12,17 @@ public struct Post: Codable {
     var uploadDate: String
     var title: String
     var content: String
-    var imageUrl: String
+    var image: String?
     var nickname: String
-    var comments: [Comment]
     
     enum CodingKeys: String, CodingKey {
         case id = "_id"
         case uploadDate
         case title
         case content
-        case imageUrl = "image"
+        case image
         case nickname
-        case comments = "comment"
     }
+    
+    static let EMPTY = Post(id: "", uploadDate: "", title: "", content: "", nickname: "")
 }
