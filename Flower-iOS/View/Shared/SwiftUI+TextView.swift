@@ -21,25 +21,39 @@ struct TextView: UIViewRepresentable {
         textView.isUserInteractionEnabled = true
         textView.text = self.placeholder
         textView.textColor = UIColor.lightGray
+        textView.font = UIFont.preferredFont(forTextStyle: .body)
         
         return textView
     }
     
     func updateUIView(_ uiView: UITextView, context: Context) {
-        uiView.text = text
+        if !text.isEmpty {
+            uiView.text = text
+            uiView.textColor = .black
+        }
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator($text, placeholder: placeholder)
+        Coordinator(self, $text, placeholder: placeholder)
     }
     
     class Coordinator: NSObject, UITextViewDelegate {
+        var parent: TextView
         var text: Binding<String>
         let placeholder: String
         
-        init(_ text: Binding<String>, placeholder: String) {
+        init(_ uiTextView: TextView, _ text: Binding<String>, placeholder: String) {
+            self.parent = uiTextView
             self.text = text
             self.placeholder = placeholder
+        }
+        
+        func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+            return true
+        }
+        
+        func textViewDidChange(_ textView: UITextView) {
+            self.parent.text = textView.text
         }
         
         func textViewDidBeginEditing(_ textView: UITextView) {
