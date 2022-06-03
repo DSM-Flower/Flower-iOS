@@ -12,13 +12,13 @@ public enum FlowerAPI {
     // MARK: Community
     case getCommunity(search: String)
     case getPost(id: String)
-    case createPost(title: String, content: String, image: UIImage?, nickname: String, password: String)
-    case modifyPost(id: String, title: String, content: String, image: UIImage?, nickname: String, password: String)
+    case createPost
+    case modifyPost
     case deletePost(id: String, nickname: String, password: String)
     
     // MARK: Comments
-    case createComment(postId: String, content: String, nickname: String, password: String)
-    case modifyComment(postId: String, content: String, nickname: String, password: String)
+    case createComment
+    case modifyComment
     case deleteComment(id: String, nickname: String, password: String)
 }
 
@@ -33,17 +33,17 @@ extension FlowerAPI {
         case let .getPost(id: id):
             return "/community?id=\(id)"
         case .createPost:
-            return "community"
+            return "/community"
         case .modifyPost:
-            return "community"
+            return "/community"
         case let .deletePost(id: id, nickname: nickname, password: password):
-            return "community?id=\(id)&nickname\(nickname)&password=\(password)"
+            return "/community?id=\(id)&nickname=\(nickname)&password=\(password)"
         case .createComment:
-            return "comment_post"
+            return "/comment"
         case .modifyComment:
-            return ""
+            return "/comment"
         case let .deleteComment(id: id, nickname: nickname, password: password):
-            return ""
+            return "/comment?id=\(id)&nickname=\(nickname)&password=\(password)"
         }
     }
 }
