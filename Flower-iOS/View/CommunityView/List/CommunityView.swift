@@ -18,15 +18,17 @@ struct CommunityListView: View {
                 SearchBar(text: $viewModel.search, placeholder: "꽃명을 입력해주세요.")
                 
                 ScrollView {
-                    NavigationLink(destination: LazyView(PostView())) {
-                        VStack(spacing: 10) {
-                            CommunityRow()
-                            
-//                            if flower.no != viewModel.flowers.last?.no {
-//                                CustomDivider()
-//                            }
-                        }.padding(.horizontal, 10)
-                            .padding(.top, 5)
+                    ForEach(viewModel.posts, id: \.id) { post in
+                        NavigationLink(destination: LazyView(PostView(id: post.id))) {
+                            VStack(spacing: 10) {
+                                CommunityRow(post: post)
+                                
+                                if post.id != viewModel.posts.last?.id {
+                                    CustomDivider()
+                                }
+                            }.padding(.horizontal, 10)
+                                .padding(.top, 5)
+                        }
                     }
                 }
             }
@@ -34,8 +36,8 @@ struct CommunityListView: View {
             .navigationTitle("커뮤니티")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: NewPostView()) {
-                        Image(systemName: "pencil")
+                    NavigationLink(destination: LazyView(NewPostView())) {
+                        Image(systemName: "plus.app").foregroundColor(Color("Black"))
                     }
                 }
             }
@@ -45,6 +47,7 @@ struct CommunityListView: View {
             }
             .onAppear {
                 uiTabarController?.tabBar.isHidden = false
+                self.viewModel.onAppear()
             }
         }.navigationViewStyle(.stack)
     }
@@ -57,30 +60,35 @@ struct CommunityListView_Previews: PreviewProvider {
 }
 
 struct CommunityRow: View {
+    let post: Post
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("제목")
+                Text(post.title)
                     .font(.title3)
                     .foregroundColor(Color("Black"))
                 
-                Text("내용")
+                Text(post.content)
                     .font(.body)
                     .foregroundColor(.gray)
+                    .lineLimit(3)
                 
                 HStack {
                     Spacer()
                     
-                    Text("날짜")
+                    Text(post.uploadDate)
                         .font(.caption)
                         .foregroundColor(.gray)
                 }
-            }
+            }.padding(.horizontal, 10)
             
             Spacer()
             
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: UIFrame.width / 6, height: UIFrame.width / 6)
+            if post.image != nil {
+                FlowerImageView(id: post.image!)
+                    .frame(width: UIFrame.width / 6, height: UIFrame.width / 6)
+            }
         }
     }
 }
