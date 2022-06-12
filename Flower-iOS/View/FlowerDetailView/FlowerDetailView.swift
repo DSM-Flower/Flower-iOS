@@ -13,6 +13,7 @@ struct FlowerDetailView: View {
     @ObservedObject var viewModel = FlowerDetailViewModel()
     @State private var uiTabarController: UITabBarController?
     @State private var isOpen = false
+    @Environment(\.safeAreaInsets) private var safeAreaInsets
     
     let no: Int
     
@@ -120,12 +121,13 @@ struct FlowerDetailView: View {
                             }
                             
                         }.padding(.horizontal)
+                            .padding(.bottom, safeAreaInsets.bottom)
                         
                     }
                 }
                 .animation(.interactiveSpring(), value: isOpen)
                 .frame(height: self.isOpen ? UIFrame.height / 1.25 : UIFrame.height - UIFrame.width / 1.25)
-                .background(Rectangle().cornerRadius(20, corners: [.topLeft, .topRight]).foregroundColor(.white).shadow(radius: 5))
+                .background(Rectangle().cornerRadius(20, corners: [.topLeft, .topRight]).foregroundColor(.white).shadow(radius: 5) .ignoresSafeArea(.all, edges: .bottom))
             }
         }
         .ignoresSafeArea(.all, edges: .bottom)
