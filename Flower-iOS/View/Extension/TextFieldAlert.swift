@@ -9,8 +9,9 @@ import UIKit
 import SwiftUI
 import Combine
 
-enum AlertType {
-    case modify
+enum TextFieldType {
+    case single
+    case double
     case delete
 }
 
@@ -19,20 +20,21 @@ class TextFieldAlertViewController: UIViewController {
     private let alertTitle: String
     private let message: String?
     @Binding private var password: String?
-    @Binding private var modifyComment: String?
-    private let alertType: AlertType
+    @Binding private var modifyString: String?
+    private let textFieldType: TextFieldType
     private let action: () -> ()
     private var isPresented: Binding<Bool>?
     
     // MARK: - Private Properties
-    private var subscription: AnyCancellable?
+    private var passwordSubscription: AnyCancellable?
+    private var stringSubscription: AnyCancellable?
     
-    init(title: String, message: String?, password: Binding<String?>, modifyComment: Binding<String?>, alertType: AlertType, action: @escaping () -> (), isPresented: Binding<Bool>?) {
+    init(title: String, message: String?, password: Binding<String?>, modifyString: Binding<String?>, textFieldType: TextFieldType, action: @escaping () -> (), isPresented: Binding<Bool>?) {
         self.alertTitle = title
         self.message = message
         self._password = password
-        self._modifyComment = modifyComment
-        self.alertType = alertType
+        self._modifyString = modifyString
+        self.textFieldType = textFieldType
         self.action = action
         self.isPresented = isPresented
         super.init(nibName: nil, bundle: nil)
@@ -49,33 +51,43 @@ class TextFieldAlertViewController: UIViewController {
     }
     
     private func presentAlertController() {
-        guard subscription == nil else { return } // present only once
+        guard passwordSubscription == nil && stringSubscription == nil else { return } // present only once
         
         let vc = UIAlertController(title: alertTitle, message: message, preferredStyle: .alert)
         
         vc.addTextField { [weak self] textField in
             guard let self = self else { return }
             textField.placeholder = "비밀번호"
-            self.subscription = NotificationCenter.default
+            textField.isSecureTextEntry = true
+            self.passwordSubscription = NotificationCenter.default
                 .publisher(for: UITextField.textDidChangeNotification, object: textField)
                 .map { ($0.object as? UITextField)?.text }
                 .assign(to: \.password, on: self)
         }
         
-        if alertType == .delete {
+        if textFieldType == .single {
+            let action = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+                self?.action()
+                self?.isPresented?.wrappedValue = false
+            }
+            vc.addAction(action)
+        } else if textFieldType == .delete {
             let action = UIAlertAction(title: "삭제", style: .destructive) { [weak self] _ in
                 self?.action()
                 self?.isPresented?.wrappedValue = false
             }
             vc.addAction(action)
-        } else if alertType == .modify {
+        } else if textFieldType == .double {
             vc.addTextField { [weak self] textField in
                 guard let self = self else { return }
-                textField.placeholder = "댓글"
-                self.subscription = NotificationCenter.default
+                if let placeholder = self.modifyString {
+                    textField.placeholder = placeholder
+                }
+                
+                self.stringSubscription = NotificationCenter.default
                     .publisher(for: UITextField.textDidChangeNotification, object: textField)
                     .map { ($0.object as? UITextField)?.text }
-                    .assign(to: \.modifyComment, on: self)
+                    .assign(to: \.modifyString, on: self)
             }
             
             let action = UIAlertAction(title: "수정", style: .default) { [weak self] _ in
@@ -96,15 +108,15 @@ class TextFieldAlertViewController: UIViewController {
 
 struct TextFieldAlert {
     let title: String
-    let alertType: AlertType
+    let textFieldType: TextFieldType
     let action: () -> ()
     @Binding var password: String?
-    @Binding var modifyComment: String?
+    @Binding var modifyString: String?
     var isPresented: Binding<Bool>? = nil
     
     // MARK: Modifiers
     func dismissable(_ isPresented: Binding<Bool>) -> TextFieldAlert {
-        TextFieldAlert(title: title, alertType: alertType, action: action, password: $password, modifyComment: $modifyComment, isPresented: isPresented)
+        TextFieldAlert(title: title, textFieldType: textFieldType, action: action, password: $password, modifyString: $modifyString, isPresented: isPresented)
     }
 }
 
@@ -113,7 +125,7 @@ extension TextFieldAlert: UIViewControllerRepresentable {
     typealias UIViewControllerType = TextFieldAlertViewController
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<TextFieldAlert>) -> UIViewControllerType {
-        TextFieldAlertViewController(title: title, message: nil, password: $password, modifyComment: $modifyComment, alertType: alertType, action: action, isPresented: isPresented)
+        TextFieldAlertViewController(title: title, message: nil, password: $password, modifyString: $modifyString, textFieldType: textFieldType, action: action, isPresented: isPresented)
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType,
