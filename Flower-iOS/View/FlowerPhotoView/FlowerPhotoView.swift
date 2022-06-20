@@ -14,7 +14,6 @@ struct FlowerPhotoView: View {
     @State private var isShowSheet = false
     @State private var isShowPhotoLibrary = false
     @State private var isShowCamera = false
-    @State private var selectedImage: UIImage?
     
     var body: some View {
         NavigationView {
@@ -28,17 +27,28 @@ struct FlowerPhotoView: View {
                         }
                 }
                 
-                ScrollView {
-                    ForEach(viewModel.flowers, id: \.no) { flower in
-                        NavigationLink(destination: LazyView(FlowerDetailView(no: flower.no))) {
-                            VStack(spacing: 10) {
-                                FlowerRow(flower: flower)
-                                
-                                if flower.no != viewModel.flowers.last?.no {
-                                    CustomDivider()
-                                }
-                            }.padding(.horizontal, 10)
-                                .padding(.top, 5)
+                if viewModel.isEmptyResult {
+                    VStack {
+                        Spacer()
+                        
+                        Text("검색 결과가 없습니다.")
+                            .foregroundColor(.gray)
+                        
+                        Spacer()
+                    }
+                } else {
+                    ScrollView {
+                        ForEach(viewModel.flowers, id: \.no) { flower in
+                            NavigationLink(destination: LazyView(FlowerDetailView(no: flower.no))) {
+                                VStack(spacing: 10) {
+                                    FlowerRow(flower: flower)
+                                    
+                                    if flower.no != viewModel.flowers.last?.no {
+                                        CustomDivider()
+                                    }
+                                }.padding(.horizontal, 10)
+                                    .padding(.top, 5)
+                            }
                         }
                     }
                 }
@@ -59,10 +69,10 @@ struct FlowerPhotoView: View {
                 )
             }
             .sheet(isPresented: $isShowPhotoLibrary) {
-                ImagePicker(sourceType: .photoLibrary, selectedImage: $selectedImage)
+                ImagePicker(sourceType: .photoLibrary, selectedImage: $viewModel.selectedImage)
             }
             .sheet(isPresented: $isShowCamera) {
-                ImagePicker(sourceType: .camera, selectedImage: $selectedImage)
+                ImagePicker(sourceType: .camera, selectedImage: $viewModel.selectedImage)
             }
         }
         .navigationViewStyle(.stack)
