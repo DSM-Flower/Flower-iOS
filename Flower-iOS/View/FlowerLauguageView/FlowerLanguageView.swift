@@ -16,17 +16,28 @@ struct FlowerLanguageView: View {
             VStack(spacing: 5) {
                 SearchBar(text: $viewModel.search, placeholder: "꽃말을 입력해주세요.")
                 
-                ScrollView {
-                    ForEach(viewModel.flowers, id: \.no) { flower in
-                        NavigationLink(destination: LazyView(FlowerDetailView(no: flower.no))) {
-                            VStack(spacing: 10) {
-                                FlowerRow(flower: flower)
-                                
-                                if flower.no != viewModel.flowers.last?.no {
-                                    CustomDivider()
-                                }
-                            }.padding(.horizontal, 10)
-                                .padding(.top, 5)
+                if viewModel.isEmptyResult {
+                    VStack {
+                        Spacer()
+                        
+                        Text("검색 결과가 없습니다.")
+                            .foregroundColor(.gray)
+                        
+                        Spacer()
+                    }
+                } else {
+                    ScrollView {
+                        ForEach(viewModel.flowers, id: \.no) { flower in
+                            NavigationLink(destination: LazyView(FlowerDetailView(no: flower.no))) {
+                                VStack(spacing: 10) {
+                                    FlowerRow(flower: flower)
+                                    
+                                    if flower.no != viewModel.flowers.last?.no {
+                                        CustomDivider()
+                                    }
+                                }.padding(.horizontal, 10)
+                                    .padding(.top, 5)
+                            }
                         }
                     }
                 }

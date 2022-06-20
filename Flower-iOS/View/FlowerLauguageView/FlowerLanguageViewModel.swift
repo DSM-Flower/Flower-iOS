@@ -12,6 +12,10 @@ class FlowerLanguageViewModel: ObservableObject {
     @Published var search = ""
     @Published var flowers = [Flower]()
     
+    public var isEmptyResult: Bool {
+        return self.search.isEmpty && self.flowers.isEmpty
+    }
+    
     private var bag = Set<AnyCancellable>()
     private let repository: OpenAPIRepository
     
